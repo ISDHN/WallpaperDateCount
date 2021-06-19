@@ -8,3 +8,13 @@ D:\ISDHN\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\WallpaperDateCounte
 D:\ISDHN\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.csproj.CoreCompileInputs.cache
 D:\ISDHN\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.exe
 D:\ISDHN\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.pdb
+D:\Chevy\Program\WallpaperDateCount\WallpaperDateCounter\bin\Debug\WallpaperDateCounter.exe.config
+D:\Chevy\Program\WallpaperDateCount\WallpaperDateCounter\bin\Debug\WallpaperDateCounter.exe
+D:\Chevy\Program\WallpaperDateCount\WallpaperDateCounter\bin\Debug\WallpaperDateCounter.pdb
+D:\Chevy\Program\WallpaperDateCount\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.csprojAssemblyReference.cache
+D:\Chevy\Program\WallpaperDateCount\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.Form1.resources
+D:\Chevy\Program\WallpaperDateCount\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.Properties.Resources.resources
+D:\Chevy\Program\WallpaperDateCount\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.csproj.GenerateResource.cache
+D:\Chevy\Program\WallpaperDateCount\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.csproj.CoreCompileInputs.cache
+D:\Chevy\Program\WallpaperDateCount\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.exe
+D:\Chevy\Program\WallpaperDateCount\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.pdb

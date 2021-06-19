@@ -9,72 +9,114 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Threading;
+using System.Runtime.InteropServices;
+using System.Drawing.Imaging;
+using System.Diagnostics;
 
 namespace WallpaperDateCounter
 {
-    public partial class Form1 : Form
-    {
-        private string registerlocation= @"SOFTWARE\WallpaperDateCounter";
-        private Thread setstread;
-        private Bitmap wallpaper = new Bitmap((int)System.Windows.SystemParameters.PrimaryScreenWidth, (int)System.Windows.SystemParameters.PrimaryScreenHeight);
-        public Form1()
-        {
-            InitializeComponent();
-        }
-        private void Draw()
-        {
-            RegistryKey key = Registry.LocalMachine.CreateSubKey(registerlocation);
-            string name = key.GetValue("EventName").ToString();
-            DateTime date = DateTime.Parse(key.GetValue("Date").ToString());
-            Graphics container =Graphics.FromImage(wallpaper);
-            container.FillRectangle(Brushes.Black, new Rectangle(0,0,wallpaper.Width, wallpaper.Height));
-            string str1 = "离" + name + "还有";
-            string str2=(date - DateTime.Now.Days).Days + "天"
-            container.DrawString(str1, new Font(SystemFonts.DefaultFont.FontFamily,64,GraphicsUnit.Pixel), Brushes.Red, wallpaper.Width / 2, wallpaper.Height / 2);
-            wallpaper.Save(Application.StartupPath + "\\wallpaper.jpg");
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            RegistryKey key = Registry.LocalMachine.CreateSubKey(registerlocation);
-            EventTitle.Text = key.GetValue("EventName").ToString();
-            Date.Value = DateTime.Parse(key.GetValue("Date").ToString());
-        }
+	public partial class Form1 : Form
+	{
+		private string registerlocation= @"SOFTWARE\WallpaperDateCounter";
+		private Thread setthread;
+		private Bitmap wallpaper;
+		
+		private const int SPI_SETDESKWALLPAPER = 0x0014;
+		private const int SPIF_UPDATEINIFILE = 0x0001;
+		private const int SPIF_SENDWININICHANGE = 0x0002;
+		[DllImport("user32.dll",SetLastError = true)]
+		private static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
+		public Form1()
+		{
+			InitializeComponent();
+		}
+		private void DrawAndSet()
+		{
+			RegistryKey key = Registry.LocalMachine.CreateSubKey(registerlocation);
+			if (key != null)
+			{
+				string name = key.GetValue("EventName").ToString();
+				string _date = key.GetValue("Date").ToString();
+				if (name.Length != 0 && _date.Length != 0)
+				{
+					DateTime date = DateTime.Parse(_date);
+					int width = (int)System.Windows.SystemParameters.PrimaryScreenWidth;
+					int height = (int)System.Windows.SystemParameters.PrimaryScreenHeight;
+					wallpaper = new Bitmap(width, height);
+					Graphics container = Graphics.FromImage(wallpaper);
+					container.FillRectangle(Brushes.Black, new Rectangle(0, 0, wallpaper.Width, wallpaper.Height));
+					string str1 = "离" + name + "还有";
+					int size1 = width / (str1.Length + 4);
+					string str2 = (date - DateTime.Now.Date).Days + "天";
+					int size2 = (int)(size1 * 1.5);
+					container.DrawString(str1, new Font(SystemFonts.DefaultFont.FontFamily, size1, GraphicsUnit.Pixel), Brushes.Red, width / 2 - (str1.Length * size1) / 2, height / 2 - size1);
+					container.DrawString(str2, new Font(SystemFonts.DefaultFont.FontFamily, size2, GraphicsUnit.Pixel), Brushes.Red, width / 2 - (str2.Length * size2) / 2, height / 2);
+					wallpaper.Save(Application.StartupPath + "\\wallpaper.bmp", ImageFormat.Bmp);
+					SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, Application.StartupPath + "\\wallpaper.bmp", SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+					Thread.Sleep(2000);
+				}
+			}
+		}
+		private void Form1_Load(object sender, EventArgs e)
+		{
+			RegistryKey keydata = Registry.LocalMachine.CreateSubKey(registerlocation);
+			if (keydata != null)
+			{
+				EventTitle.Text = keydata.GetValue("EventName").ToString();
+				string date = keydata.GetValue("Date").ToString();
+				if (date.Length != 0)
+					Date.Value = DateTime.Parse(date);
+			}
+			RegistryKey keyrun = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+			keyrun.SetValue("WallpaperDateCounter", Application.ExecutablePath);
+			setthread = new Thread(() =>
+			{
+				while (true)
+					DrawAndSet();
+			});
+			setthread.Start();
+			
+		}
 
-        private void ShowSetting_Click(object sender, EventArgs e)
-        {
-            ShowInTaskbar = true;
-            Show();
-            BringToFront();
-        }
+		private void ShowSetting_Click(object sender, EventArgs e)
+		{
+			ShowInTaskbar = true;
+			Show();
+			BringToFront();
+		}
 
-        private void YesButton_Click(object sender, EventArgs e)
-        {
-            RegistryKey key = Registry.LocalMachine.CreateSubKey(registerlocation);
-            key.SetValue("EventName", EventTitle.Text); ;
-            key.SetValue("Date", Date.Value);
-            CloseFrm();
-        }
-        private void CloseFrm()
-        {
-            this.Hide();
-        }
+		private void YesButton_Click(object sender, EventArgs e)
+		{
+			RegistryKey key = Registry.LocalMachine.CreateSubKey(registerlocation);
+			key.SetValue("EventName", EventTitle.Text); ;
+			key.SetValue("Date", Date.Value);
+			CloseFrm();
+		}
+		private void CloseFrm()
+		{
+			this.Hide();
+		}
 
-        private void CancelButton_Click(object sender, EventArgs e)
-        {
-            CloseFrm();
-        }
+		private void CancelButton_Click(object sender, EventArgs e)
+		{
+			CloseFrm();
+		}
 
-        private void SaveButton_Click(object sender, EventArgs e)
-        {
-            RegistryKey key = Registry.LocalMachine.CreateSubKey(registerlocation);
-            key.SetValue("EventName", EventTitle.Text); ;
-            key.SetValue("Date", Date.Value.Date);
-            Draw();
-        }
+		private void SaveButton_Click(object sender, EventArgs e)
+		{
+			RegistryKey key = Registry.LocalMachine.CreateSubKey(registerlocation);
+			key.SetValue("EventName", EventTitle.Text); ;
+			key.SetValue("Date", Date.Value.Date);
+		}
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			CloseFrm();
+		}
+
+        private void WebAddress_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            CloseFrm();
+			Process.Start(@"https://github.com/ISDHN/WallpaperDateCounter");
         }
     }
 }
