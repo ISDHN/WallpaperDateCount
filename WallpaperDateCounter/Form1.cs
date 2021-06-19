@@ -35,9 +35,9 @@ namespace WallpaperDateCounter
 			RegistryKey key = Registry.LocalMachine.CreateSubKey(registerlocation);
 			if (key != null)
 			{
-				string name = key.GetValue("EventName").ToString();
-				string _date = key.GetValue("Date").ToString();
-				if (name.Length != 0 && _date.Length != 0)
+				string name = (string)key.GetValue("EventName");
+				string _date = (string)key.GetValue("Date");
+				if (name != null && _date != null)
 				{
 					DateTime date = DateTime.Parse(_date);
 					int width = (int)System.Windows.SystemParameters.PrimaryScreenWidth;
@@ -62,9 +62,9 @@ namespace WallpaperDateCounter
 			RegistryKey keydata = Registry.LocalMachine.CreateSubKey(registerlocation);
 			if (keydata != null)
 			{
-				EventTitle.Text = keydata.GetValue("EventName").ToString();
-				string date = keydata.GetValue("Date").ToString();
-				if (date.Length != 0)
+				EventTitle.Text = (string)keydata.GetValue("EventName");
+				string date = (string)keydata.GetValue("Date");
+				if (date!= null)
 					Date.Value = DateTime.Parse(date);
 			}
 			RegistryKey keyrun = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
