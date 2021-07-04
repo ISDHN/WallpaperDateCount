@@ -42,41 +42,39 @@ namespace WallpaperDateCounter
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.NotifyIconMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ShowSetting = new System.Windows.Forms.ToolStripMenuItem();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Choose = new System.Windows.Forms.Button();
+            this.File = new System.Windows.Forms.OpenFileDialog();
             this.NotifyIconMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(103, 69);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(127, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.Size = new System.Drawing.Size(91, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "事件名：";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(103, 107);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(127, 115);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.Size = new System.Drawing.Size(112, 26);
             this.label2.TabIndex = 1;
             this.label2.Text = "事件日期：";
             // 
             // WebAddress
             // 
-            this.WebAddress.AutoSize = true;
-            this.WebAddress.Location = new System.Drawing.Point(52, 188);
-            this.WebAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.WebAddress.Location = new System.Drawing.Point(47, 234);
             this.WebAddress.Name = "WebAddress";
-            this.WebAddress.Size = new System.Drawing.Size(89, 12);
+            this.WebAddress.Size = new System.Drawing.Size(175, 28);
             this.WebAddress.TabIndex = 2;
             this.WebAddress.TabStop = true;
             this.WebAddress.Text = "在Github上访问";
+            this.WebAddress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.WebAddress.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.WebAddress_LinkClicked);
             // 
             // Date
@@ -85,26 +83,26 @@ namespace WallpaperDateCounter
             this.Date.CalendarMonthBackground = System.Drawing.Color.Black;
             this.Date.CalendarTitleBackColor = System.Drawing.Color.Black;
             this.Date.CalendarTitleForeColor = System.Drawing.Color.White;
-            this.Date.Location = new System.Drawing.Point(169, 107);
-            this.Date.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Date.Location = new System.Drawing.Point(243, 115);
+            this.Date.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Date.Name = "Date";
-            this.Date.Size = new System.Drawing.Size(151, 21);
+            this.Date.Size = new System.Drawing.Size(200, 25);
             this.Date.TabIndex = 3;
             // 
             // EventTitle
             // 
-            this.EventTitle.Location = new System.Drawing.Point(169, 67);
-            this.EventTitle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.EventTitle.Location = new System.Drawing.Point(243, 65);
+            this.EventTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.EventTitle.Name = "EventTitle";
-            this.EventTitle.Size = new System.Drawing.Size(151, 21);
+            this.EventTitle.Size = new System.Drawing.Size(200, 25);
             this.EventTitle.TabIndex = 4;
             // 
             // YesBtn
             // 
-            this.YesBtn.Location = new System.Drawing.Point(165, 173);
-            this.YesBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.YesBtn.Location = new System.Drawing.Point(243, 221);
+            this.YesBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.YesBtn.Name = "YesBtn";
-            this.YesBtn.Size = new System.Drawing.Size(64, 27);
+            this.YesBtn.Size = new System.Drawing.Size(100, 40);
             this.YesBtn.TabIndex = 5;
             this.YesBtn.Text = "确定";
             this.YesBtn.UseVisualStyleBackColor = true;
@@ -112,10 +110,10 @@ namespace WallpaperDateCounter
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Location = new System.Drawing.Point(256, 173);
-            this.CancelBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CancelBtn.Location = new System.Drawing.Point(364, 221);
+            this.CancelBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(64, 27);
+            this.CancelBtn.Size = new System.Drawing.Size(100, 40);
             this.CancelBtn.TabIndex = 6;
             this.CancelBtn.Text = "取消";
             this.CancelBtn.UseVisualStyleBackColor = true;
@@ -123,10 +121,10 @@ namespace WallpaperDateCounter
             // 
             // SaveBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(338, 173);
-            this.SaveBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SaveBtn.Location = new System.Drawing.Point(473, 221);
+            this.SaveBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SaveBtn.Name = "SaveBtn";
-            this.SaveBtn.Size = new System.Drawing.Size(64, 27);
+            this.SaveBtn.Size = new System.Drawing.Size(100, 40);
             this.SaveBtn.TabIndex = 7;
             this.SaveBtn.Text = "应用";
             this.SaveBtn.UseVisualStyleBackColor = true;
@@ -148,22 +146,49 @@ namespace WallpaperDateCounter
             this.ShowSetting});
             this.NotifyIconMenu.Name = "NotifyIconMenu";
             this.NotifyIconMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.NotifyIconMenu.Size = new System.Drawing.Size(101, 26);
+            this.NotifyIconMenu.Size = new System.Drawing.Size(109, 28);
             // 
             // ShowSetting
             // 
             this.ShowSetting.ForeColor = System.Drawing.Color.White;
             this.ShowSetting.Name = "ShowSetting";
-            this.ShowSetting.Size = new System.Drawing.Size(100, 22);
+            this.ShowSetting.Size = new System.Drawing.Size(108, 24);
             this.ShowSetting.Text = "设置";
             this.ShowSetting.Click += new System.EventHandler(this.ShowSetting_Click);
             // 
+            // label3
+            // 
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(127, 159);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 26);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "背景图像：";
+            // 
+            // Choose
+            // 
+            this.Choose.AutoSize = true;
+            this.Choose.Location = new System.Drawing.Point(243, 159);
+            this.Choose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Choose.Name = "Choose";
+            this.Choose.Size = new System.Drawing.Size(100, 26);
+            this.Choose.TabIndex = 10;
+            this.Choose.Text = "选择文件";
+            this.Choose.UseVisualStyleBackColor = true;
+            this.Choose.Click += new System.EventHandler(this.Choose_Click);
+            // 
+            // File
+            // 
+            this.File.Filter = "图像文件|*.jpg;*.bmp;*.png";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(439, 210);
+            this.ClientSize = new System.Drawing.Size(617, 302);
+            this.Controls.Add(this.Choose);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.YesBtn);
@@ -172,19 +197,17 @@ namespace WallpaperDateCounter
             this.Controls.Add(this.WebAddress);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "设置";
-            this.TopMost = true;
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.NotifyIconMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -203,6 +226,9 @@ namespace WallpaperDateCounter
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ContextMenuStrip NotifyIconMenu;
         private System.Windows.Forms.ToolStripMenuItem ShowSetting;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button Choose;
+        private System.Windows.Forms.OpenFileDialog File;
     }
 }
 
