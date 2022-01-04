@@ -32,7 +32,7 @@ namespace WallpaperDateCounter
 		}
 		private void DrawAndSet()
 		{
-			RegistryKey key = Registry.LocalMachine.CreateSubKey(registerlocation,RegistryKeyPermissionCheck.ReadWriteSubTree);
+			RegistryKey key = Registry.CurrentUser.CreateSubKey(registerlocation,RegistryKeyPermissionCheck.ReadWriteSubTree);
 			if (key != null)
 			{
 				string name = (string)key.GetValue("EventName");
@@ -79,7 +79,7 @@ namespace WallpaperDateCounter
 		}
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			RegistryKey keydata = Registry.LocalMachine.CreateSubKey(registerlocation, RegistryKeyPermissionCheck.ReadWriteSubTree);
+			RegistryKey keydata = Registry.CurrentUser.CreateSubKey(registerlocation, RegistryKeyPermissionCheck.ReadWriteSubTree);
 			if (keydata != null)
 			{
 				EventTitle.Text = (string)keydata.GetValue("EventName");
@@ -88,7 +88,7 @@ namespace WallpaperDateCounter
 				if (date!= null)
 					Date.Value = DateTime.Parse(date);
 			}
-			RegistryKey keyrun = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", RegistryKeyPermissionCheck.ReadWriteSubTree);
+			RegistryKey keyrun = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", RegistryKeyPermissionCheck.ReadWriteSubTree);
 			keyrun.SetValue("WallpaperDateCounter", Application.ExecutablePath);
 			setthread = new Thread(() =>
 			{
@@ -106,7 +106,7 @@ namespace WallpaperDateCounter
 
 		private void YesButton_Click(object sender, EventArgs e)
 		{
-			RegistryKey key = Registry.LocalMachine.CreateSubKey(registerlocation, RegistryKeyPermissionCheck.ReadWriteSubTree);
+			RegistryKey key = Registry.CurrentUser.CreateSubKey(registerlocation, RegistryKeyPermissionCheck.ReadWriteSubTree);
 			key.SetValue("EventName", EventTitle.Text); ;
 			key.SetValue("Date", Date.Value);
 			key.SetValue("Background", File.FileName);
@@ -125,7 +125,7 @@ namespace WallpaperDateCounter
 
 		private void SaveButton_Click(object sender, EventArgs e)
 		{
-			RegistryKey key = Registry.LocalMachine.CreateSubKey(registerlocation, RegistryKeyPermissionCheck.ReadWriteSubTree);
+			RegistryKey key = Registry.CurrentUser.CreateSubKey(registerlocation, RegistryKeyPermissionCheck.ReadWriteSubTree);
 			key.SetValue("EventName", EventTitle.Text); ;
 			key.SetValue("Date", Date.Value.Date);
 			key.SetValue("Background",File.FileName);
