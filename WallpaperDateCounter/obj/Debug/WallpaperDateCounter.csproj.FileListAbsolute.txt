@@ -28,3 +28,14 @@ E:\ISDHN\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\WallpaperDateCounte
 E:\ISDHN\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.csproj.CoreCompileInputs.cache
 E:\ISDHN\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\wdc.exe
 E:\ISDHN\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\wdc.pdb
+D:\Tools\WallpaperDateCounter\WallpaperDateCounter\bin\Debug\wdc.exe.config
+D:\Tools\WallpaperDateCounter\WallpaperDateCounter\bin\Debug\wdc.exe
+D:\Tools\WallpaperDateCounter\WallpaperDateCounter\bin\Debug\wdc.pdb
+D:\Tools\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.csproj.AssemblyReference.cache
+D:\Tools\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.csproj.SuggestedBindingRedirects.cache
+D:\Tools\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.Form1.resources
+D:\Tools\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.Properties.Resources.resources
+D:\Tools\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.csproj.GenerateResource.cache
+D:\Tools\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\WallpaperDateCounter.csproj.CoreCompileInputs.cache
+D:\Tools\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\wdc.exe
+D:\Tools\WallpaperDateCounter\WallpaperDateCounter\obj\Debug\wdc.pdb
